@@ -9,7 +9,7 @@ import FormEntregador from './views/entregador/FormEntregador';
 function App() {
   return (
     <div className="App">
-      <FormCliente />
+      <FormEntregador />
 
       <div style={{marginTop: '6%'}}>
         <Segment vertical color='grey' size='tiny' textAlign='center'>

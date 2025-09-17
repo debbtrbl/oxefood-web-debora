@@ -1,8 +1,56 @@
 import InputMask from "comigo-tech-react-input-mask";
-import React from "react";
+import { useState } from "react";
 import { Button, Container, Divider, Form, Icon } from "semantic-ui-react";
+import axios from "axios";
 
-export default function FormCliente() {
+export default function FormEntregador() {
+  const [nome, setNome] = useState();
+  const [cpf, setCpf] = useState();
+  const [rg, setRg] = useState();
+  const [dataNascimento, setDataNascimento] = useState();
+  const [foneCelular, setFoneCelular] = useState();
+  const [foneFixo, setFoneFixo] = useState();
+  const [qtdEntregas, setQtdEntregas] = useState();
+  const [valorFrete, setValorFrete] = useState();
+  const [rua, setRua] = useState();
+  const [numero, setNumero] = useState();
+  const [bairro, setBairro] = useState();
+  const [cidade, setCidade] = useState();
+  const [cep, setCep] = useState();
+  const [uf, setUf] = useState();
+  const [complemento, setComplemento] = useState();
+  const [ativo, setAtivo] = useState(true);
+
+  function salvar() {
+    let entregadorRequest = {
+      nome,
+      cpf,
+      rg,
+      dataNascimento,
+      foneCelular,
+      foneFixo,
+      qtdEntregasRealizadas: qtdEntregas,
+      valorFrete,
+      enderecoRua: rua,
+      enderecoNumero: numero,
+      enderecoBairro: bairro,
+      enderecoCidade: cidade,
+      enderecoCep: cep,
+      enderecoUf: uf,
+      enderecoComplemento: complemento,
+      ativo,
+    };
+
+    axios
+      .post("http://localhost:8080/api/entregador", entregadorRequest)
+      .then((response) => {
+        console.log("Entregador cadastrado com sucesso.");
+      })
+      .catch((error) => {
+        console.log("Erro ao incluir o um entregador.");
+      });
+  }
+
   return (
     <div>
       <div style={{ marginTop: "3%" }}>
@@ -22,35 +70,110 @@ export default function FormCliente() {
           <div style={{ marginTop: "4%" }}>
             <Form>
               <Form.Group>
-                <Form.Input required fluid label="Nome" maxLength="100"  width={8} />
+                <Form.Input
+                  required
+                  fluid
+                  label="Nome"
+                  maxLength="100"
+                  width={8}
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                />
 
-                <Form.Input required fluid label="CPF"  width={5}>
-                  <InputMask required mask="999.999.999-99" />
+                <Form.Input required fluid label="CPF" width={5}>
+                  <InputMask
+                    required
+                    mask="999.999.999-99"
+                    value={cpf}
+                    onChange={(e) => setCpf(e.target.value)}
+                  />
                 </Form.Input>
-                <Form.Input fluid label="RG"  width={5}>
-                </Form.Input>
+                <Form.Input
+                  fluid
+                  label="RG"
+                  width={5}
+                  value={rg}
+                  onChange={(e) => setRg(e.target.value)}
+                ></Form.Input>
               </Form.Group>
               <Form.Group>
-                <Form.Input fluid label="Data de nascimento" width={6}></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Data de nascimento"
+                  width={6}
+                  value={dataNascimento}
+                  onChange={(e) => setDataNascimento(e.target.value)}
+                ></Form.Input>
                 <Form.Input required fluid label="Telefone Celular" width={6}>
-                  <InputMask required mask="(99) 99999-9999" />
+                  <InputMask
+                    required
+                    mask="(99) 99999-9999"
+                    value={foneCelular}
+                    onChange={(e) => setFoneCelular(e.target.value)}
+                  />
                 </Form.Input>
                 <Form.Input fluid label="Telefone Fixo" width={6}>
-                  <InputMask mask="(99) 9999-9999" />
+                  <InputMask
+                    mask="(99) 9999-9999"
+                    value={foneFixo}
+                    onChange={(e) => setFoneFixo(e.target.value)}
+                  />
                 </Form.Input>
-                <Form.Input fluid label="Qtd. de entregas realizadas" width={6}></Form.Input>
-                <Form.Input fluid label="Valor por frete" width={6}></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Qtd. de entregas realizadas"
+                  width={6}
+                  value={qtdEntregas}
+                  onChange={(e) => setQtdEntregas(e.target.value)}
+                ></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Valor por frete"
+                  width={6}
+                  value={valorFrete}
+                  onChange={(e) => setValorFrete(e.target.value)}
+                ></Form.Input>
               </Form.Group>
 
               <Form.Group>
-                <Form.Input fluid label="Rua" width={13}></Form.Input>
-                <Form.Input fluid label="Número" width={5}></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Rua"
+                  width={13}
+                  value={rua}
+                  onChange={(e) => setRua(e.target.value)}
+                ></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Número"
+                  width={5}
+                  value={numero}
+                  onChange={(e) => setNumero(e.target.value)}
+                ></Form.Input>
               </Form.Group>
 
               <Form.Group>
-                <Form.Input fluid label="Bairro" width={7}></Form.Input>
-                <Form.Input fluid label="Cidade" width={7}></Form.Input>
-                <Form.Input fluid label="CEP" width={4}></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Bairro"
+                  width={7}
+                  value={bairro}
+                  onChange={(e) => setBairro(e.target.value)}
+                ></Form.Input>
+                <Form.Input
+                  fluid
+                  label="Cidade"
+                  width={7}
+                  value={cidade}
+                  onChange={(e) => setCidade(e.target.value)}
+                ></Form.Input>
+                <Form.Input
+                  fluid
+                  label="CEP"
+                  width={4}
+                  value={cep}
+                  onChange={(e) => setCep(e.target.value)}
+                ></Form.Input>
               </Form.Group>
 
               <Form.Select
@@ -62,17 +185,33 @@ export default function FormCliente() {
                   { key: "RJ", text: "Rio de Janeiro", value: "RJ" },
                 ]}
                 placeholder="Selecione"
+                value={uf}
+                onChange={(e) => setUf(e.target.value)}
               />
 
-              <Form.Input fluid label="Complemento"></Form.Input>
+              <Form.Input
+                fluid
+                label="Complemento"
+                value={complemento}
+                onChange={(e) => setComplemento(e.target.value)}
+              ></Form.Input>
               <Form.Group>
-                <label><strong>Ativo: </strong></label>
-                <Form.Radio label="Sim" style={{ marginTop: "4%" }} defaultChecked>
-                  <input type="checkbox"  /> 
-                </Form.Radio>
-                <Form.Radio label="Não" style={{ marginTop: "4%" }}>
-                  <input type="checkbox"  /> 
-                </Form.Radio>
+                <label>
+                  <strong>Ativo: </strong>
+                </label>
+                <Form.Radio
+                  label="Sim"
+                  style={{ marginTop: "4%" }}
+                  defaultChecked
+                  value={ativo}
+                  onChange={(e) => setAtivo(e.target.value)}
+                ></Form.Radio>
+                <Form.Radio
+                  label="Não"
+                  style={{ marginTop: "4%" }}
+                  value={ativo}
+                  onChange={(e) => setAtivo(e.target.value)}
+                ></Form.Radio>
               </Form.Group>
             </Form>
 
@@ -96,6 +235,7 @@ export default function FormCliente() {
                 labelPosition="left"
                 color="blue"
                 floated="right"
+                onClick={() => salvar()}
               >
                 <Icon name="save" />
                 Salvar
