@@ -32,9 +32,13 @@ export default function FormCliente() {
               </Form.Group>
               <Form.Group>
                 <Form.Input fluid label="Data de nascimento" width={6}></Form.Input>
-                <Form.Input required fluid label="Telefone Celular" width={6}></Form.Input>
-                <Form.Input fluid label="Telefone Fixo" width={6}></Form.Input>
-                <Form.Input fluid label="Qtd. de Entregas realizadas" width={6}></Form.Input>
+                <Form.Input required fluid label="Telefone Celular" width={6}>
+                  <InputMask required mask="(99) 99999-9999" />
+                </Form.Input>
+                <Form.Input fluid label="Telefone Fixo" width={6}>
+                  <InputMask mask="(99) 9999-9999" />
+                </Form.Input>
+                <Form.Input fluid label="Qtd. de entregas realizadas" width={6}></Form.Input>
                 <Form.Input fluid label="Valor por frete" width={6}></Form.Input>
               </Form.Group>
 
