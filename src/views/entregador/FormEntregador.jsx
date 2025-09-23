@@ -1,7 +1,8 @@
 import InputMask from "comigo-tech-react-input-mask";
 import { useState } from "react";
-import { Button, Container, Divider, Form, Icon } from "semantic-ui-react";
+import { Button, Container, Divider, Form, Icon, Menu } from "semantic-ui-react";
 import axios from "axios";
+import MenuSistema from "../../MenuSistema";
 
 export default function FormEntregador() {
   const [nome, setNome] = useState();
@@ -53,6 +54,7 @@ export default function FormEntregador() {
 
   return (
     <div>
+      <MenuSistema tela="entregador" />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign="justified">
           <h2>
