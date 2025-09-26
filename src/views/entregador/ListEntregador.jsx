@@ -38,7 +38,7 @@ export default function ListEntregador() {
       <MenuSistema tela={"entregador"} />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign="justified">
-          <h2> Entregadores </h2>
+          <h2> Entregador </h2>
           <Divider />
 
           <div style={{ marginTop: "4%" }}>
@@ -66,7 +66,7 @@ export default function ListEntregador() {
                   <Table.HeaderCell>Endereço</Table.HeaderCell>
                   <Table.HeaderCell>Entregas</Table.HeaderCell>
                   <Table.HeaderCell>Frete</Table.HeaderCell>
-                  <Table.HeaderCell>Situação</Table.HeaderCell> 
+                  <Table.HeaderCell>Situação</Table.HeaderCell>
                   <Table.HeaderCell textAlign="center">Ações</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -81,21 +81,26 @@ export default function ListEntregador() {
                     </Table.Cell>
                     <Table.Cell>{entregador.foneCelular}</Table.Cell>
                     <Table.Cell>{entregador.foneFixo}</Table.Cell>
-                    <Table.Cell>{entregador.enderecoRua}, {entregador.enderecoNumero} <br/> {entregador.enderecoBairro}, {entregador.enderecoCidade} - {entregador.enderecoUf}</Table.Cell>
+                    <Table.Cell>
+                      {entregador.enderecoRua}, {entregador.enderecoNumero}{" "}
+                      <br /> {entregador.enderecoBairro},{" "}
+                      {entregador.enderecoCidade} - {entregador.enderecoUf}
+                    </Table.Cell>
                     <Table.Cell>{entregador.qtdEntregasRealizadas} </Table.Cell>
                     <Table.Cell>{entregador.valorFrete}</Table.Cell>
                     <Table.Cell>{formatarAtivo(entregador.ativo)}</Table.Cell>
                     <Table.Cell textAlign="center">
-                      <Button
-                        inverted
-                        circular
-                        color="green"
-                        title="Clique aqui para editar os dados deste cliente"
-                        icon
-                      >
-                        <Icon name="edit" />
-                      </Button>{" "}
-                      &nbsp;
+                      <Link to="/form-entregador" state={{ id: entregador.id }}>
+                        <Button
+                          inverted
+                          circular
+                          color="green"
+                          title="Clique aqui para editar os dados deste cliente"
+                          icon
+                        >
+                          <Icon name="edit" />
+                        </Button>
+                      </Link>
                       <Button
                         inverted
                         circular

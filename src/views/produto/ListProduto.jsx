@@ -62,16 +62,17 @@ export default function ListProduto() {
                     <Table.Cell>{produto.tempoEntregaMinimo}</Table.Cell>
                     <Table.Cell>{produto.tempoEntregaMaximo}</Table.Cell>
                     <Table.Cell textAlign="center">
-                      <Button
-                        inverted
-                        circular
-                        color="green"
-                        title="Clique aqui para editar os dados deste cliente"
-                        icon
-                      >
-                        <Icon name="edit" />
-                      </Button>{" "}
-                      &nbsp;
+                      <Link to="/form-produto" state={{ id: produto.id }}>
+                        <Button
+                          inverted
+                          circular
+                          color="green"
+                          title="Clique aqui para editar os dados deste cliente"
+                          icon
+                        >
+                          <Icon name="edit" />
+                        </Button>
+                      </Link>
                       <Button
                         inverted
                         circular
