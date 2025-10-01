@@ -31,6 +31,13 @@ export default function MenuSistema(props) {
           as={Link}
           to="/list-entregador"
         />
+
+        <Menu.Item
+          content="Categoria de produto"
+          active={props.tela === "categoriaProduto"}
+          as={Link}
+          to="/list-categoria-produto"
+        />
       </Menu>
     </>
   );

@@ -2,6 +2,7 @@ import InputMask from "comigo-tech-react-input-mask";
 import { React, useState, useEffect } from "react";
 import { Button, Container, Divider, Form, Icon } from "semantic-ui-react";
 import axios from "axios";
+import MenuSistema from "../../MenuSistema";
 import { Link, useLocation } from "react-router-dom";
 
 export default function FormProduto() {
@@ -65,6 +66,7 @@ export default function FormProduto() {
 
   return (
     <div>
+      <MenuSistema tela="produto" />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign="justified">
           {idProduto === undefined && (
