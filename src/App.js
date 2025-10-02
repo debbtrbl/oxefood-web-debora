@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Rotas />
 
-      <div style={{marginTop: '6%'}}>
+      <div style={{marginTop: '18%'}}>
         <Segment vertical color='grey' size='tiny' textAlign='center'>
           &copy; 2024 - Projeto WEB IV - IFPE Jaboatão dos Guararapes
         </Segment>

@@ -95,7 +95,7 @@ export default function FormEntregador() {
           console.log("Entregador alterado com sucesso.");
         })
         .catch((error) => {
-          console.log("Erro ao alter um entregador.");
+          console.log("Erro ao alterar o entregador.");
         });
     } else {
       //Cadastro:

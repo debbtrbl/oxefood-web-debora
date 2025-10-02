@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <MenuSistema tela="home" />
-      <div style={{ marginTop: "5%" }}>
+      <div style={{ marginTop: "13%" }}>
         <Container>
           <Grid columns={2} divided>
             <Grid.Row>
@@ -15,10 +15,10 @@ export default function Home() {
               </Grid.Column>
               <Grid.Column>
                 Bem vindo ao sistema <strong>OxeFood</strong> ! <br />
-                Este sistema foi desenvolvido na disciplina de Desenvolvimento
+                Este sistema foi desenvolvido na disciplina de <br /> Desenvolvimento
                 para WEB IV. <br /> <br />
                 Para acessar o código da <strong>API</strong> do sistema,
-                acesse:{" "}
+                acesse:{" "} <br />
                 <a
                   href="https://github.com/debbtrbl/oxefood-api-debora"
                   target="_blank"
@@ -27,7 +27,7 @@ export default function Home() {
                   https://github.com/debbtrbl/oxefood-api-debora{" "}
                 </a>{" "}
                 <br /> <br />
-                Para acessar o código do <strong>Módulo WEB</strong>, acesse:{" "}
+                Para acessar o código do <strong>Módulo WEB</strong>, acesse:{" "} <br />
                 <a
                   href="https://github.com/debbtrbl/oxefood-web-debora"
                   target="_blank"

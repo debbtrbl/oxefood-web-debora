@@ -70,7 +70,7 @@ export default function ListCategoriaProduto() {
             <Table color="orange" sortable celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Descrição</Table.HeaderCell>
+                  <Table.HeaderCell width={12}>Descrição</Table.HeaderCell>
                   <Table.HeaderCell textAlign="center">Ações</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -82,6 +82,7 @@ export default function ListCategoriaProduto() {
 
                     <Table.Cell textAlign="center">
                       <Link to="/form-categoria-produto" state={{ id: categoriaProduto.id }}>
+                      
                         <Button
                           inverted
                           circular

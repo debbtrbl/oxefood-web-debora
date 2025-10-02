@@ -84,10 +84,10 @@ export default function FormCategoriaProduto() {
                 <Form.Input
                   required
                   fluid
-                  label="Descrição do produto"
+                  label="Categoria"
                   maxLength="100"
-                  width={13}
-                  placeholder="Informe o título do produto"
+                  width={18}
+                  placeholder="Informe a categoria"
                   value={descricao}
                   onChange={(e) => setDescricao(e.target.value)}
                 />
