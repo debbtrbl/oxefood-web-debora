@@ -97,6 +97,17 @@ export default function ListCliente() {
                     <Table.Cell>{cliente.foneCelular}</Table.Cell>
                     <Table.Cell>{cliente.foneFixo}</Table.Cell>
                     <Table.Cell textAlign="center">
+                      <Link to={`/list-endereco-cliente/${cliente.id}`}>
+                        <Button
+                          inverted
+                          circular
+                          color="blue"
+                          title="Clique aqui para ver os endereços deste cliente"
+                          icon
+                        >
+                          <Icon name="map marker alternate" />
+                        </Button>
+                      </Link>
                       <Link to="/form-cliente" state={{ id: cliente.id }}>
                         <Button
                           inverted
