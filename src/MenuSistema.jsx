@@ -38,6 +38,20 @@ export default function MenuSistema(props) {
           as={Link}
           to="/list-categoria-produto"
         />
+
+        <Menu.Item
+          content="Cidade"
+          active={props.tela === "cidade"}
+          as={Link}
+          to="/list-cidade"
+        />
+
+        <Menu.Item
+          content="Estado"
+          active={props.tela === "estado"}
+          as={Link}
+          to="/list-estado"
+        />
       </Menu>
     </>
   );
