@@ -121,7 +121,7 @@ export default function ListEnderecoCliente() {
                     <Table.Cell>{endereco.complemento || "-"}</Table.Cell>
                     <Table.Cell textAlign="center">
                       <Link
-                        to="/form-endereco"
+                        to={`/form-endereco-cliente/${idCliente}`}
                         state={{ enderecoId: endereco.id }}
                       >
                         <Button

@@ -9,6 +9,7 @@ import {
   Table,
   Modal,
   Header,
+  ModalDescription,
 } from "semantic-ui-react";
 import MenuSistema from "../../MenuSistema";
 
@@ -17,6 +18,7 @@ export default function ListCidade() {
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
   const [idRemover, setIdRemover] = useState();
+  const [cidadeDetalhes, setCidadeDetalhes] = useState(null);
 
   useEffect(() => {
     carregarLista();
@@ -42,8 +44,10 @@ export default function ListCidade() {
     return arrayData[2] + "/" + arrayData[1] + "/" + arrayData[0];
   }
 
-    function detalhesCidade(id) {
-    setOpenModal2(true);
+    function abrirDetalhesCidade(id) {
+      const cidadeSelecionada = lista.find(cidade => cidade.id === id);
+      setCidadeDetalhes(cidadeSelecionada);
+      setOpenModal2(true);
   }
   async function remover() {
     await axios
@@ -100,7 +104,7 @@ export default function ListCidade() {
                         <Button
                         inverted
                         color="orange"
-                        onClick={(e) => detalhesCidade(cidade.id)}
+                        onClick={(e) => abrirDetalhesCidade(cidade.id)}
                         title="Clique aqui para ver detalhes desta cidade"
                         icon
                       >
@@ -158,25 +162,34 @@ export default function ListCidade() {
         </Modal.Actions>
 </Modal>
 <Modal
-        basic
-        onClose={() => setOpenModal2(false)}
-        onOpen={() => setOpenModal2(true)}
-        open={openModal2}
+  onClose={() => {
+    setOpenModal2(false);
+    setCidadeDetalhes(null);
+  }}
+  onOpen={() => setOpenModal2(true)}
+  open={openModal2}
+  size="mini"
 >
-        <Header icon>
-            <Icon name='map' />
-            <div style={{marginTop: '5%'}}> Detalhamento da Cidade  </div>
-            {lista.map((cidade) => (
-                <p textAlign="justified">Nome: {cidade.nome} <br/>  UF: {cidade.estado.sigla} <br/> População: {cidade.qtdPopulacao} <br/>Data de fundação:{formatarData(cidade.dataFundacao)}</p>
-                
-            ))}
-            
-        </Header>
-        <Modal.Actions>
-            <Button basic color='red' inverted onClick={() => setOpenModal2(false)}>
-                <Icon name='remove' /> Fechar
-            </Button>
-        </Modal.Actions>
+  <Modal.Header>
+    <Icon name='map' /> Detalhes da Cidade
+  </Modal.Header>
+  <Modal.Content>
+ <div style={{ fontSize: '16px', lineHeight: '2' }}>
+      <p><strong>Nome:</strong> {cidadeDetalhes?.nome}</p>
+      <p><strong>Estado:</strong> {cidadeDetalhes?.estado?.sigla} - {cidadeDetalhes?.estado?.nome}</p>
+      <p><strong>População:</strong> {cidadeDetalhes?.qtdPopulacao ? cidadeDetalhes.qtdPopulacao.toLocaleString('pt-BR') : 'Não informada'}</p>
+      <p><strong>Data de Fundação:</strong> {formatarData(cidadeDetalhes?.dataFundacao) || 'Não informada'}</p>
+      <p><strong>Capital do Estado:</strong> {cidadeDetalhes?.ehCapital ? "Sim" : "Não"}</p>
+    </div>
+  </Modal.Content>
+  <Modal.Actions>
+    <Button color='red' onClick={() => {
+      setOpenModal2(false);
+      setCidadeDetalhes(null);
+    }}>
+      <Icon name='close' /> Fechar
+    </Button>
+  </Modal.Actions>
 </Modal>
     </div>
   );

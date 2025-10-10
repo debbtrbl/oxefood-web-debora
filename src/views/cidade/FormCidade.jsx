@@ -6,14 +6,14 @@ import MenuSistema from "../../MenuSistema";
 import { Link, useLocation } from "react-router-dom";
 
 export default function FormCidade() {
-    const [nome, setNome] = useState();
-    const [qtdPopulacao, setQtdPopulacao] = useState();
-    const [ehCapital, setEhCapital] = useState();
-    const [dataFundacao, setDataFundacao] = useState();
-    const [listaEstado, setListaEstado] = useState([]);
-    const [idEstado, setIdEstado] = useState();
-    const [idCidade, setIdCidade] = useState();
-    const { state } = useLocation();
+  const [nome, setNome] = useState();
+  const [qtdPopulacao, setQtdPopulacao] = useState();
+  const [ehCapital, setEhCapital] = useState();
+  const [dataFundacao, setDataFundacao] = useState();
+  const [listaEstado, setListaEstado] = useState([]);
+  const [idEstado, setIdEstado] = useState();
+  const [idCidade, setIdCidade] = useState();
+  const { state } = useLocation();
 
   useEffect(() => {
     if (state != null && state.id != null) {
@@ -35,7 +35,6 @@ export default function FormCidade() {
       }));
       setListaEstado(dropDownEstados);
     });
-
   }, [state]);
 
   function formatarData(dataParam) {
@@ -52,7 +51,7 @@ export default function FormCidade() {
       idEstado: idEstado,
       nome: nome,
       qtdPopulacao: qtdPopulacao,
-      ehCapital: ehCapital,
+      ehCapital: ehCapital === true || ehCapital === "true",
       dataFundacao: dataFundacao,
     };
 
@@ -81,7 +80,7 @@ export default function FormCidade() {
 
   return (
     <div>
-    <MenuSistema tela="cidade" />
+      <MenuSistema tela="cidade" />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign="justified">
           {idCidade === undefined && (
@@ -111,60 +110,53 @@ export default function FormCidade() {
 
           <div style={{ marginTop: "4%" }}>
             <Form>
-                <Form.Group>
-                    <Form.Input
-                    required
-                    fluid
-                    label="Nome"
-                    maxLength="100"
-                    width={9}
-                    placeholder="Informe o nome da cidade"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    >
-                    </Form.Input>
-                    <Form.Input
-                    required
-                    fluid
-                    label="Número de habitantes"
-                    maxLength="100"
-                    width={9}
-                    placeholder="Informe o número de habitantes"
-                    value={qtdPopulacao}
-                    onChange={(e) => setQtdPopulacao(e.target.value)}
-                    >
-                    </Form.Input>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Input
-                    required
-                    fluid
-                    label="Data de fundação"
-                    width={9}
-                    >
-                    <InputMask
+              <Form.Group>
+                <Form.Input
+                  required
+                  fluid
+                  label="Nome"
+                  maxLength="100"
+                  width={9}
+                  placeholder="Informe o nome da cidade"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                ></Form.Input>
+                <Form.Input
+                  required
+                  fluid
+                  label="Número de habitantes"
+                  maxLength="100"
+                  width={9}
+                  placeholder="Informe o número de habitantes"
+                  value={qtdPopulacao}
+                  onChange={(e) => setQtdPopulacao(e.target.value)}
+                ></Form.Input>
+              </Form.Group>
+              <Form.Group>
+                <Form.Input required fluid label="Data de fundação" width={9}>
+                  <InputMask
                     mask="99/99/9999"
                     maskChar={null}
                     placeholder="Ex: 20/03/1985"
                     value={dataFundacao}
                     onChange={(e) => setDataFundacao(e.target.value)}
-                    />
-                    </Form.Input>
-                    <Form.Select
-                    required
-                    fluid
-                    tabIndex="3"
-                    width={9}
-                    placeholder="Selecione"
-                    label="Estado"
-                    options={listaEstado}
-                    value={idEstado}
-                    onChange={(e, { value }) => {
-                        setIdEstado(value);
-                    }}
-                    />
-                </Form.Group>
-                <Form.Group>
+                  />
+                </Form.Input>
+                <Form.Select
+                  required
+                  fluid
+                  tabIndex="3"
+                  width={9}
+                  placeholder="Selecione"
+                  label="Estado"
+                  options={listaEstado}
+                  value={idEstado}
+                  onChange={(e, { value }) => {
+                    setIdEstado(value);
+                  }}
+                />
+              </Form.Group>
+              <Form.Group>
                 <label>
                   <strong>É capital?: </strong>
                 </label>
@@ -172,17 +164,17 @@ export default function FormCidade() {
                   label="Sim"
                   style={{ marginTop: "4%" }}
                   value={true}
-                  onChange={(e) => setEhCapital(e.target.value)}
+                  checked={ehCapital === true || ehCapital === "true"}
+                  onChange={(e, { value }) => setEhCapital(value)}
                 ></Form.Radio>
                 <Form.Radio
                   label="Não"
                   style={{ marginTop: "4%" }}
                   value={false}
-                  onChange={(e) => setEhCapital(e.target.value)}
+                  checked={!ehCapital || ehCapital === "false"}
+                  onChange={(e, { value }) => setEhCapital(value)}
                 ></Form.Radio>
               </Form.Group>
-
-                
             </Form>
 
             <div style={{ marginTop: "4%" }}>
